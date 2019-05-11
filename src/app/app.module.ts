@@ -7,13 +7,15 @@ import { DemoComponent } from './demo/demo.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { routes } from './app-routing.module';
 import { LandingComponent } from './landing/landing.component';
+import { ExportComponent } from './export/export.component';
 
 @NgModule({
    declarations: [
       AppComponent,
       DemoComponent,
       NotFoundComponent,
-      LandingComponent
+      LandingComponent,
+      ExportComponent
    ],
    imports: [
       BrowserModule,

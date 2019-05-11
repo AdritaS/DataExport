@@ -3,7 +3,15 @@
     <div class="row">
       <div class="col-md-6 card">
         <div class="card-header">
-          Employee List
+          <div class="row">
+            <div class="col-md-5">
+              Employee List
+            </div>
+            <div class="col-md-7 text-right">
+              <app-export [title]="'Employee List'" [data]="employeeList"
+                [headers]="['EId','Name','DOJ','Highest Qualification']"></app-export>
+            </div>
+          </div>
         </div>
         <table class="table table-striped">
           <thead>
@@ -26,7 +34,14 @@
       </div>
       <div class="col-md-6 card">
         <div class="card-header">
-          Employee Qualification
+          <div class="row">
+            <div class="col-md-5">
+              Employee Qualification
+            </div>
+            <div class="col-md-7 text-right">
+              <app-export></app-export>
+            </div>
+          </div>
         </div>
       </div>
     </div>
