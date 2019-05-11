@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
+import { GoogleChartsModule } from 'angular-google-charts';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -19,7 +19,8 @@ import { ExportComponent } from './export/export.component';
    ],
    imports: [
       BrowserModule,
-      RouterModule.forRoot(routes)
+      RouterModule.forRoot(routes),
+      GoogleChartsModule.forRoot()
    ],
    providers: [],
    bootstrap: [

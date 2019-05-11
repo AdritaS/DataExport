@@ -54,13 +54,10 @@ export class ExcelExportService {
 
     worksheet.addRows(data);
 
-    for (var i = 2; i <= headers.length; i++) {
+    for (var i = 1; i <= headers.length; i++) {
       worksheet.getColumn(i).width = 30;
     }
-    // worksheet.getColumn(3).width = 30;
-    // worksheet.getColumn(4).width = 30;
     worksheet.addRow([]);
-
 
 
     //Generate Excel File with given name

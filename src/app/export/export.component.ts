@@ -24,7 +24,6 @@ export class ExportComponent implements OnInit {
   }
 
   imageExport() {
-    debugger
     this.imageService.saveImage(this.selectorId, this.title)
   }
 
