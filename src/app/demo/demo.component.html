@@ -9,11 +9,12 @@
             </div>
             <div class="col-md-7 text-right">
               <app-export [title]="'Employee List'" [data]="employeeList"
-                [headers]="['EId','Name','DOJ','Highest Qualification']"></app-export>
+                [headers]="['EId','Name','DOJ','Highest Qualification']" [selectorId]="'employee-list-table'">
+              </app-export>
             </div>
           </div>
         </div>
-        <table class="table table-striped">
+        <table class="table table-striped" id="employee-list-table">
           <thead>
             <tr>
               <th scope="col">EId</th>
