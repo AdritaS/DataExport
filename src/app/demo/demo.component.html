@@ -1,4 +1,4 @@
-<div class="row">
+<div class="">
   <div class="col-md-11 mx-auto">
     <div class="row">
       <div class="col-md-6 card">
@@ -9,7 +9,7 @@
             </div>
             <div class="col-md-7 text-right">
               <app-export [title]="'Employee List'" [data]="employeeList"
-                [headers]="['EId','Name','DOJ','Highest Qualification']" [selectorId]="'employee-list-table'">
+                [headers]="['EId','Name','DOJ','Highest Qualification']" [selectorId]="'#employee-list-table'">
               </app-export>
             </div>
           </div>
@@ -40,7 +40,7 @@
               Employee Qualification
             </div>
             <div class="col-md-7 text-right">
-              <app-export [selectorId]="'employee-qualification-chart'" [title]="'Employee Qualification'"
+              <app-export [selectorId]="'#employee-qualification-chart'" [title]="'Employee Qualification'"
                 [data]="employeeQualificationChart.data" [headers]="['Qualification','No Of Employees']" [isChart]="true"></app-export>
             </div>
           </div>

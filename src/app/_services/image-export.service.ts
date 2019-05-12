@@ -10,7 +10,7 @@ export class ImageExportService {
   constructor(private fileSaver: SaveFileService) { }
 
   saveImage(selector: string, title: string) {
-    var content = document.getElementById(selector)
+    var content = document.querySelector(selector)
     if (content) {
       html2canvas(content).then(canvas => {
         this.fileSaver.saveFile(canvas.toDataURL("image/jpeg"), title, 'jpeg')

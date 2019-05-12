@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ExcelExportService } from '../_services/excel-export.service';
 import { ImageExportService } from '../_services/image-export.service';
+import { PdfService } from '../_services/pdf.service';
 
 @Component({
   selector: 'app-export',
@@ -9,7 +10,7 @@ import { ImageExportService } from '../_services/image-export.service';
 })
 export class ExportComponent implements OnInit {
 
-  constructor(private excelService: ExcelExportService, private imageService: ImageExportService) { }
+  constructor(private excelService: ExcelExportService, private imageService: ImageExportService, private pdfService: PdfService) { }
 
   @Input() title: string
   @Input() data: Array<any>
@@ -26,6 +27,14 @@ export class ExportComponent implements OnInit {
 
   imageExport() {
     this.imageService.saveImage(this.selectorId, this.title)
+  }
+
+  pdfDownload() {
+    if (this.isChart) {
+      this.pdfService.generateChartToPdf(this.selectorId, this.title)
+    } else {
+      this.pdfService.generateHtmlTableToPdf(this.selectorId, this.title)
+    }
   }
 
 }

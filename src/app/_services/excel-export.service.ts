@@ -67,7 +67,7 @@ export class ExcelExportService {
       titleRow1.font = { name: 'Calibri', family: 4, size: 14, bold: true }
       chartworksheet.addRow([]);
 
-      var content = document.getElementById(imageSelectorId)
+      var content = document.querySelector(imageSelectorId)
       if (content) {
         html2canvas(content).then(canvas => {
           let logo = workbook.addImage({
