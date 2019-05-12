@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Workbook } from 'exceljs';
 import { SaveFileService } from './save-file.service';
+import * as html2canvas from "html2canvas"
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,7 @@ export class ExcelExportService {
 
   constructor(private fileSaver: SaveFileService) { }
 
-  generateExcel(title: string, jsondata: Array<any>, headers: Array<string>) {
-
+  generateExcel(title: string, jsondata: Array<any>, headers: Array<string>, imageSelectorId?: string) {
     let data: Array<any> = []
 
     //Format json data
@@ -59,12 +59,37 @@ export class ExcelExportService {
     }
     worksheet.addRow([]);
 
+    if (imageSelectorId) {
 
-    //Generate Excel File with given name
-    workbook.xlsx.writeBuffer().then((data) => {
-      let blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-      this.fileSaver.saveFile(blob, title, 'xlsx')
-    })
+      let chartworksheet = workbook.addWorksheet('Chart');
 
+      let titleRow1 = chartworksheet.addRow([`${title} - Chart`]);
+      titleRow1.font = { name: 'Calibri', family: 4, size: 14, bold: true }
+      chartworksheet.addRow([]);
+
+      var content = document.getElementById(imageSelectorId)
+      if (content) {
+        html2canvas(content).then(canvas => {
+          let logo = workbook.addImage({
+            base64: canvas.toDataURL("image/jpeg"),
+            extension: 'jpeg',
+          });
+
+          chartworksheet.addImage(logo, 'A4:J22');
+
+          //Generate Excel File with given name
+          workbook.xlsx.writeBuffer().then((data) => {
+            let blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            this.fileSaver.saveFile(blob, title, 'xlsx')
+          })
+        });
+      }
+    } else {
+      //Generate Excel File with given name
+      workbook.xlsx.writeBuffer().then((data) => {
+        let blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+        this.fileSaver.saveFile(blob, title, 'xlsx')
+      })
+    }
   }
 }

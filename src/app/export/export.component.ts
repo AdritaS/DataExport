@@ -15,12 +15,13 @@ export class ExportComponent implements OnInit {
   @Input() data: Array<any>
   @Input() headers: Array<string>
   @Input() selectorId: string
+  @Input() isChart?: boolean
 
   ngOnInit() {
   }
 
   excelExport() {
-    this.excelService.generateExcel(this.title, this.data, this.headers)
+    this.excelService.generateExcel(this.title, this.data, this.headers, this.isChart ? this.selectorId : null)
   }
 
   imageExport() {

@@ -41,12 +41,12 @@
             </div>
             <div class="col-md-7 text-right">
               <app-export [selectorId]="'employee-qualification-chart'" [title]="'Employee Qualification'"
-                [data]="employeeQualificationChart.data" [headers]="['Qualification','No Of Employees']"></app-export>
+                [data]="employeeQualificationChart.data" [headers]="['Qualification','No Of Employees']" [isChart]="true"></app-export>
             </div>
           </div>
         </div>
         <div id="employee-qualification-chart">
-          <google-chart *ngIf="employeeQualificationChart.display" style="width: 100%; height: 300px;"
+          <google-chart *ngIf="employeeQualificationChart.display" style="width: 100%; height: 400px;"
             [title]="employeeQualificationChart.title" [type]="employeeQualificationChart.type"
             [data]="employeeQualificationChart.data" [columnNames]="employeeQualificationChart.columnNames"
             [roles]="employeeQualificationChart.roles" [options]="employeeQualificationChart.options">
